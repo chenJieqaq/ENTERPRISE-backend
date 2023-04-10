@@ -11,12 +11,13 @@
 
     <artifactId>eladmin-bussiness</artifactId>
     <name>业务模块</name>
+
+
     <dependencies>
         <dependency>
             <groupId>me.zhengjie</groupId>
             <artifactId>eladmin-common</artifactId>
             <version>2.6</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.zhengjie</groupId>
@@ -26,5 +27,8 @@
         </dependency>
     </dependencies>
 
-
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 </project>

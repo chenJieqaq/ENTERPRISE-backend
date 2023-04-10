@@ -37,7 +37,7 @@ import java.io.Serializable;
 public class Salary implements Serializable {
 
     @Id
-    @Column(name = "`deploy_no`")
+    @Column(name = "`deployee_no`")
     @ApiModelProperty(value = "员工编号")
     private Integer deployNo;
 
