@@ -103,6 +103,8 @@ public class SalaryServiceImpl implements SalaryService {
             map.put("创建人", salary.getCreateby());
             map.put("更新人", salary.getUpdateby());
             map.put("员工姓名", salary.getDeployeeName());
+            map.put("跟新时间", salary.getUpdateAt());
+            map.put("创建时间", salary.getCreateAt());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

@@ -21,6 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.copier.CopyOptions;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.sql.Timestamp;
 import java.math.BigDecimal;
 import java.io.Serializable;
 
@@ -67,6 +68,14 @@ public class Salary implements Serializable {
     @Column(name = "`deployee_name`")
     @ApiModelProperty(value = "员工姓名")
     private String deployeeName;
+
+    @Column(name = "`update_at`")
+    @ApiModelProperty(value = "跟新时间")
+    private Timestamp updateAt;
+
+    @Column(name = "`create_at`")
+    @ApiModelProperty(value = "创建时间")
+    private Timestamp createAt;
 
     public void copy(Salary source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

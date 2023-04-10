@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 **/
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "salary管理")
+@Api(tags = "薪资管理接口管理")
 @RequestMapping("/api/salary")
 public class SalaryController {
 
@@ -52,24 +52,24 @@ public class SalaryController {
     }
 
     @GetMapping
-    @Log("查询salary")
-    @ApiOperation("查询salary")
+    @Log("查询薪资管理接口")
+    @ApiOperation("查询薪资管理接口")
     @PreAuthorize("@el.check('salary:list')")
     public ResponseEntity<Object> querySalary(SalaryQueryCriteria criteria, Pageable pageable){
         return new ResponseEntity<>(salaryService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
     @PostMapping
-    @Log("新增salary")
-    @ApiOperation("新增salary")
+    @Log("新增薪资管理接口")
+    @ApiOperation("新增薪资管理接口")
     @PreAuthorize("@el.check('salary:add')")
     public ResponseEntity<Object> createSalary(@Validated @RequestBody Salary resources){
         return new ResponseEntity<>(salaryService.create(resources),HttpStatus.CREATED);
     }
 
     @PutMapping
-    @Log("修改salary")
-    @ApiOperation("修改salary")
+    @Log("修改薪资管理接口")
+    @ApiOperation("修改薪资管理接口")
     @PreAuthorize("@el.check('salary:edit')")
     public ResponseEntity<Object> updateSalary(@Validated @RequestBody Salary resources){
         salaryService.update(resources);
@@ -77,8 +77,8 @@ public class SalaryController {
     }
 
     @DeleteMapping
-    @Log("删除salary")
-    @ApiOperation("删除salary")
+    @Log("删除薪资管理接口")
+    @ApiOperation("删除薪资管理接口")
     @PreAuthorize("@el.check('salary:del')")
     public ResponseEntity<Object> deleteSalary(@RequestBody Integer[] ids) {
         salaryService.deleteAll(ids);

@@ -16,6 +16,7 @@
 package me.zhengjie.service.dto;
 
 import lombok.Data;
+import java.sql.Timestamp;
 import java.math.BigDecimal;
 import java.io.Serializable;
 
@@ -51,4 +52,10 @@ public class SalaryDto implements Serializable {
 
     /** 员工姓名 */
     private String deployeeName;
+
+    /** 跟新时间 */
+    private Timestamp updateAt;
+
+    /** 创建时间 */
+    private Timestamp createAt;
 }
