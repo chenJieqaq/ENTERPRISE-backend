@@ -15,6 +15,7 @@
 */
 package me.zhengjie.service.impl;
 
+import cn.hutool.core.util.RandomUtil;
 import me.zhengjie.domain.TodoDone;
 import me.zhengjie.utils.*;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +30,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.security.SecurityPermission;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
 * @website https://eladmin.vip
@@ -76,6 +74,8 @@ public class TodoDoneServiceImpl implements TodoDoneService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public TodoDoneDto create(TodoDone resources) {
+        int i = RandomUtil.randomInt(5);
+        resources.setId(i);//待办已办的消息id由hutool工具包的RandomUtil类生成随机数
         return todoDoneMapper.toDto(todoDoneRepository.save(resources));
     }
 
