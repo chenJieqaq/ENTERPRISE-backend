@@ -41,36 +41,44 @@ public class TodoDone implements Serializable {
     private Integer id;
 
     @Column(name = "`title`")
-    @ApiModelProperty(value = "title")
+    @ApiModelProperty(value = "标题")
     private String title;
 
     @Column(name = "`content`")
-    @ApiModelProperty(value = "content")
+    @ApiModelProperty(value = "内容")
     private String content;
 
     @Column(name = "`deadline`")
-    @ApiModelProperty(value = "deadline")
+    @ApiModelProperty(value = "截至时间")
     private Timestamp deadline;
 
     @Column(name = "`created_at`")
-    @ApiModelProperty(value = "createdAt")
+    @ApiModelProperty(value = "创建时间")
     private String createdAt;
 
     @Column(name = "`updated_at`")
-    @ApiModelProperty(value = "updatedAt")
+    @ApiModelProperty(value = "更新时间")
     private String updatedAt;
 
     @Column(name = "`status`")
-    @ApiModelProperty(value = "status")
+    @ApiModelProperty(value = "状态")
     private String status;
 
     @Column(name = "`type`")
-    @ApiModelProperty(value = "type")
+    @ApiModelProperty(value = "类型")
     private String type;
+
+    @Column(name = "`deployee_name`")
+    @ApiModelProperty(value = "被告知的员工名称")
+    private String deployeeName;
+
+    @Column(name = "`deployee_no`")
+    @ApiModelProperty(value = "被告知的员工编号")
+    private Integer deployeeNo;
 
     @Column(name = "`isdelete`")
     @ApiModelProperty(value = "isdelete")
-    private String isdelete;
+    private Long isdelete;
 
     public void copy(TodoDone source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

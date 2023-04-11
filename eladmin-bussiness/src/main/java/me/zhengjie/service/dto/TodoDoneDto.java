@@ -28,21 +28,35 @@ import java.io.Serializable;
 @Data
 public class TodoDoneDto implements Serializable {
 
+    /** id */
     private Integer id;
 
+    /** 标题 */
     private String title;
 
+    /** 内容 */
     private String content;
 
+    /** 截至时间 */
     private Timestamp deadline;
 
+    /** 创建时间 */
     private String createdAt;
 
+    /** 更新时间 */
     private String updatedAt;
 
+    /** 状态 */
     private String status;
 
+    /** 类型 */
     private String type;
 
-    private String isdelete;
+    /** 被告知的员工名称 */
+    private String deployeeName;
+
+    /** 被告知的员工编号 */
+    private Integer deployeeNo;
+
+    private Long isdelete;
 }

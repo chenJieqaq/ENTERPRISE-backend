@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 **/
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "工作台管理")
+@Api(tags = "todo_done管理")
 @RequestMapping("/api/todoDone")
 public class TodoDoneController {
 
@@ -52,24 +52,24 @@ public class TodoDoneController {
     }
 
     @GetMapping
-    @Log("查询工作台")
-    @ApiOperation("查询工作台")
+    @Log("查询todo_done")
+    @ApiOperation("查询todo_done")
     @PreAuthorize("@el.check('todoDone:list')")
     public ResponseEntity<Object> queryTodoDone(TodoDoneQueryCriteria criteria, Pageable pageable){
         return new ResponseEntity<>(todoDoneService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
     @PostMapping
-    @Log("新增工作台")
-    @ApiOperation("新增工作台")
+    @Log("新增todo_done")
+    @ApiOperation("新增todo_done")
     @PreAuthorize("@el.check('todoDone:add')")
     public ResponseEntity<Object> createTodoDone(@Validated @RequestBody TodoDone resources){
         return new ResponseEntity<>(todoDoneService.create(resources),HttpStatus.CREATED);
     }
 
     @PutMapping
-    @Log("修改工作台")
-    @ApiOperation("修改工作台")
+    @Log("修改todo_done")
+    @ApiOperation("修改todo_done")
     @PreAuthorize("@el.check('todoDone:edit')")
     public ResponseEntity<Object> updateTodoDone(@Validated @RequestBody TodoDone resources){
         todoDoneService.update(resources);
@@ -77,8 +77,8 @@ public class TodoDoneController {
     }
 
     @DeleteMapping
-    @Log("删除工作台")
-    @ApiOperation("删除工作台")
+    @Log("删除todo_done")
+    @ApiOperation("删除todo_done")
     @PreAuthorize("@el.check('todoDone:del')")
     public ResponseEntity<Object> deleteTodoDone(@RequestBody Integer[] ids) {
         todoDoneService.deleteAll(ids);

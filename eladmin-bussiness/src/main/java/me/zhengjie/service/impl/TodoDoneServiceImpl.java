@@ -96,13 +96,15 @@ public class TodoDoneServiceImpl implements TodoDoneService {
         List<Map<String, Object>> list = new ArrayList<>();
         for (TodoDoneDto todoDone : all) {
             Map<String,Object> map = new LinkedHashMap<>();
-            map.put(" title",  todoDone.getTitle());
-            map.put(" content",  todoDone.getContent());
-            map.put(" deadline",  todoDone.getDeadline());
-            map.put(" createdAt",  todoDone.getCreatedAt());
-            map.put(" updatedAt",  todoDone.getUpdatedAt());
-            map.put(" status",  todoDone.getStatus());
-            map.put(" type",  todoDone.getType());
+            map.put("标题", todoDone.getTitle());
+            map.put("内容", todoDone.getContent());
+            map.put("截至时间", todoDone.getDeadline());
+            map.put("创建时间", todoDone.getCreatedAt());
+            map.put("更新时间", todoDone.getUpdatedAt());
+            map.put("状态", todoDone.getStatus());
+            map.put("类型", todoDone.getType());
+            map.put("被告知的员工名称", todoDone.getDeployeeName());
+            map.put("被告知的员工编号", todoDone.getDeployeeNo());
             map.put(" isdelete",  todoDone.getIsdelete());
             list.add(map);
         }
