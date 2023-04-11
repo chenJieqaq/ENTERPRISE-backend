@@ -41,5 +41,9 @@ public class TodoDoneQueryCriteria{
 
     /** 精确 */
     @Query
+    private Integer deployeeNo;
+
+    /** 精确 */
+    @Query
     private Long isdelete;
 }
