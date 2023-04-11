@@ -34,14 +34,13 @@ public class TodoDoneQueryCriteria{
     /** 精确 */
     @Query
     private String type;
-
+    @Query
+    private Integer deployeeNo;
     /** 模糊 */
     @Query(type = Query.Type.INNER_LIKE)
     private String deployeeName;
 
-    /** 精确 */
-    @Query
-    private Integer deployeeNo;
+
 
     /** 精确 */
     @Query

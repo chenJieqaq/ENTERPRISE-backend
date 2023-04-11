@@ -16,8 +16,7 @@
 package me.zhengjie.service.impl;
 
 import me.zhengjie.domain.TodoDone;
-import me.zhengjie.utils.ValidationUtil;
-import me.zhengjie.utils.FileUtil;
+import me.zhengjie.utils.*;
 import lombok.RequiredArgsConstructor;
 import me.zhengjie.repository.TodoDoneRepository;
 import me.zhengjie.service.TodoDoneService;
@@ -28,8 +27,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import me.zhengjie.utils.PageUtil;
-import me.zhengjie.utils.QueryHelp;
+
+import java.security.SecurityPermission;
 import java.util.List;
 import java.util.Map;
 import java.io.IOException;
@@ -52,6 +51,11 @@ public class TodoDoneServiceImpl implements TodoDoneService {
 
     @Override
     public Map<String,Object> queryAll(TodoDoneQueryCriteria criteria, Pageable pageable){
+        String username = SecurityUtils.getCurrentUser().getUsername();//获取用户名
+        Long currentUserId = SecurityUtils.getCurrentUserId();//获取用户名id
+
+//        criteria.setDeployeeName(username);
+        criteria.setDeployeeNo(currentUserId.intValue());
         Page<TodoDone> page = todoDoneRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
         return PageUtil.toPage(page.map(todoDoneMapper::toDto));
     }
