@@ -18,8 +18,8 @@
         <module>eladmin-bussiness</module>
     </modules>
 
-    <name>ELADMIN 后台管理</name>
-    <url>https://eladmin.vip</url>
+    <name>人事管理管理</name>
+    <url>https://xxxxxxxxxx</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

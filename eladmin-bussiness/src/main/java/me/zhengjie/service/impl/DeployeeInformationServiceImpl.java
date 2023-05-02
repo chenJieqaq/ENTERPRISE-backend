@@ -53,6 +53,8 @@ public class DeployeeInformationServiceImpl implements DeployeeInformationServic
 
     @Override
     public Map<String,Object> queryAll(DeployeeInformationQueryCriteria criteria, Pageable pageable){
+//        查询Isdelete字段值为"false"的记录
+        criteria.setIsdelete("false");
         Page<DeployeeInformation> page = deployeeInformationRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
         return PageUtil.toPage(page.map(deployeeInformationMapper::toDto));
     }
@@ -73,7 +75,7 @@ public class DeployeeInformationServiceImpl implements DeployeeInformationServic
     @Override
     @Transactional(rollbackFor = Exception.class)
     public DeployeeInformationDto create(DeployeeInformation resources) {
-        resources.setId(IdUtil.simpleUUID()); 
+        resources.setId(IdUtil.simpleUUID());
         return deployeeInformationMapper.toDto(deployeeInformationRepository.save(resources));
     }
 
@@ -89,10 +91,13 @@ public class DeployeeInformationServiceImpl implements DeployeeInformationServic
     @Override
     public void deleteAll(String[] ids) {
         for (String id : ids) {
-            deployeeInformationRepository.deleteById(id);
+            DeployeeInformation deployeeInformation = deployeeInformationRepository.findById(id).orElseGet(DeployeeInformation::new);
+            deployeeInformation.setIsDelete("true");
+//            修改所删除的记录行的isdelete字段值为"true"
         }
     }
 
+    //            deployeeInformationRepository.deleteById(id);
     @Override
     public void download(List<DeployeeInformationDto> all, HttpServletResponse response) throws IOException {
         List<Map<String, Object>> list = new ArrayList<>();

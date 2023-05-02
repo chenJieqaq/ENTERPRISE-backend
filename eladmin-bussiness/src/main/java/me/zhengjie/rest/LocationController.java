@@ -18,8 +18,8 @@ public class LocationController {
     public String getLocation(@RequestBody Location location) {
         String url = "http://api.map.baidu.com/reverse_geocoding/v3/?ak={ak}&output=json&coordtype=wgs84ll&location={lat},{lng}";
         String ak = "NRLkmp5ELkuF2gpi5qNc52HLtGAwbeBt"; // 请替换为自己的百度地图API的ak
-        double lat = location.getLat();
-        double lng = location.getLng();
+        double lat = location.getLat();  //纬度
+        double lng = location.getLng();  //经度
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.getForObject(url, String.class, ak, lat, lng);
 

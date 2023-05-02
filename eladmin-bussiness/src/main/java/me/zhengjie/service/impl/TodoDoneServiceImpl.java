@@ -47,12 +47,13 @@ public class TodoDoneServiceImpl implements TodoDoneService {
     private final TodoDoneRepository todoDoneRepository;
     private final TodoDoneMapper todoDoneMapper;
 
+    //        criteria.setDeployeeName(username)
+
     @Override
     public Map<String,Object> queryAll(TodoDoneQueryCriteria criteria, Pageable pageable){
         String username = SecurityUtils.getCurrentUser().getUsername();//获取用户名
         Long currentUserId = SecurityUtils.getCurrentUserId();//获取用户名id
-
-//        criteria.setDeployeeName(username);
+;
         criteria.setDeployeeNo(currentUserId.intValue());
         Page<TodoDone> page = todoDoneRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
         return PageUtil.toPage(page.map(todoDoneMapper::toDto));
